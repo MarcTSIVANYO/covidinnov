@@ -1,0 +1,136 @@
+<style type="text/css">
+	/* ----- Custom Font Import ----- */
+	@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin,latin-ext);
+
+	/* ----- Text Styles ----- */
+	table{
+		font-family: 'Lato', Arial, sans-serif;
+		-webkit-font-smoothing: antialiased;
+		-moz-font-smoothing: antialiased;
+		font-smoothing: antialiased;
+	}
+
+	@media only screen and (max-width: 700px){
+		/* ----- Base styles ----- */
+		.full-width-container{
+			padding: 0 !important;
+		}
+
+		.container{
+			width: 100% !important;
+		}
+
+		/* ----- Header ----- */
+		.header td{
+			padding: 30px 15px 30px 15px !important;
+		}
+
+		/* ----- Projects list ----- */
+		.projects-list{
+			display: block !important;
+		}
+
+		.projects-list tr{
+			display: block !important;
+		}
+
+		.projects-list td{
+			display: block !important;
+		}
+
+		.projects-list tbody{
+			display: block !important;
+		}
+
+		.projects-list img{
+			margin: 0 auto 25px auto;
+		}
+
+		/* ----- Half block ----- */
+		.half-block{
+			display: block !important;
+		}
+
+		.half-block tr{
+			display: block !important;
+		}
+
+		.half-block td{
+			display: block !important;
+		}
+
+		.half-block__image{
+			width: 100% !important;
+			background-size: cover;
+		}
+
+		.half-block__content{
+			width: 100% !important;
+			box-sizing: border-box;
+			padding: 25px 15px 25px 15px !important;
+		}
+
+		/* ----- Hero subheader ----- */
+		.hero-subheader__title{
+			padding: 80px 15px 15px 15px !important;
+			font-size: 35px !important;
+		}
+
+		.hero-subheader__content{
+			padding: 0 15px 90px 15px !important;
+		}
+
+		/* ----- Title block ----- */
+		.title-block{
+			padding: 0 15px 0 15px;
+		}
+
+		/* ----- Paragraph block ----- */
+		.paragraph-block__content{
+			padding: 25px 15px 18px 15px !important;
+		}
+
+		/* ----- Info bullets ----- */
+		.info-bullets{
+			display: block !important;
+		}
+
+		.info-bullets tr{
+			display: block !important;
+		}
+
+		.info-bullets td{
+			display: block !important;
+		}
+
+		.info-bullets tbody{
+			display: block;
+		}
+
+		.info-bullets__icon{
+			text-align: center;
+			padding: 0 0 15px 0 !important;
+		}
+
+		.info-bullets__content{
+			text-align: center;
+		}
+
+		.info-bullets__block{
+			padding: 25px !important;
+		}
+
+		/* ----- CTA block ----- */
+		.cta-block__title{
+			padding: 35px 15px 0 15px !important;
+		}
+
+		.cta-block__content{
+			padding: 20px 15px 27px 15px !important;
+		}
+
+		.cta-block__button{
+			padding: 0 15px 0 15px !important;
+		}
+	}
+</style>

@@ -1,0 +1,88 @@
+@extends('templates.background')
+@section('content')
+<div class="box box-primary">
+  <div class="box-header">
+    <div class="box-header with-border">
+      <h3 class="box-title">Attribution de <span style="color: blue">{{ $money->titre }}</span> vers</h3>
+    </div>
+  <!-- /.box-header -->
+
+  {!! Form::open(['url' => 'admin/moneys/attribuer_post' ]) !!}
+
+  @if(Session::has('flash_message'))
+    <div class="alert alert-success alert-dismissible" role="alert" data-plugin="alertify">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">×</span>
+      </button>
+      {{ Session::get('flash_message') }}
+    </div>
+    <script type="text/javascript">
+    opener.location.replace('{{URL::To('admin/moneys')}}');
+    </script>
+    @endif
+
+
+  <div class="row">
+        <div class="col-xs-4">
+          <div class="form-group">
+          </div>
+        </div>
+        <div class="col-xs-8">
+          <div class="form-group">
+            {!! Form::hidden('id_moneys', $id, ['class' => 'form-control']) !!}
+          </div>
+        </div>
+      </div>
+  <div class="box-body">
+    <table id="example1" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+            <th>Money</th><th>Taux</th>
+        </tr>
+<?php $moneys_save = $moneys;
+?>
+@foreach($moneys_save as $money)
+          <tr>
+            <td>
+<?php $attribuers_save = $attribuers;
+$m                     = 0;
+?>
+@foreach($attribuers_save as $attribuer)
+                    @if($attribuer->id_recevez == $money->id)
+                      <input  type="checkbox" checked name="moneys[]" value="{{ $money->id }}" />
+                        {{ $money->titre }}
+<?php $m = 1;?>
+@break
+                    @endif
+                  @endforeach
+              @if($m == 0)
+                <input type="checkbox" name="moneys[]" value="{{ $money->id }}" />
+                {{ $money->titre }}
+              @endif
+            </td>
+            <td>
+<?php $attribuers_save = $attribuers;?>
+                  @foreach($attribuers_save as $attribuer)
+                    @if($attribuer->id_recevez == $money->id)
+                      <input  type="text" name="taux[{{ $money->id }}]" value="{{ $attribuer->taux }}" />
+                      @break
+                    @endif
+                  @endforeach
+                @if($m == 0)
+                  <input  type="text" name="taux[{{ $money->id }}]" value="0" />
+                @endif
+            </td>
+          </tr>
+          @endforeach
+      </thead>
+    </table>
+    <div class="col-xs-12" align="right">
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary">Valider</button>
+        </div>
+      </div>
+  </div>
+  <!-- /.box-body -->
+  {!! Form::close() !!}
+</div>
+@stop

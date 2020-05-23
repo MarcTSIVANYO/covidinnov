@@ -1,0 +1,134 @@
+img {
+  max-width: 100%;
+}
+a {
+  color: #311B92;
+}
+.material-icons {
+  display: inline-block;
+  width: 28px;
+  vertical-align: inherit;
+}
+.page-content {
+  padding: 8px;
+  padding-top: 48px;
+}
+.header {
+  background-color: #10247D;
+}
+.mdl-navigation__link {
+  font-weight: bold;
+}
+.mdl-navigation__link:hover {
+  background-color: #C1856D;
+}
+.section--center {
+  max-width: 860px;
+/*}
+.mdl-layout__content section:not(:last-of-type) {*/
+  position: relative;
+  margin-bottom: 48px;
+}
+.mdl-card__supporting-text {
+  color: inherit;
+}
+h4 {
+  margin-top: 16px;
+  border-bottom: 2px solid #3452B4;
+  white-space: nowrap;
+  color: #180F24;
+}
+h4 .material-icons {
+  margin-right: 8px;
+  font-size: 2rem;
+  vertical-align: text-bottom;
+}
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 1.5rem;
+}
+h2 {
+  font-size: 1.25rem;
+  line-height: 1.2;
+  margin: 0;
+}
+h2 + h2 {
+  margin-top: 8px;
+}
+.resume {
+  font-size: 1.1rem;
+  margin: 32px auto;
+  max-width: 660px;
+}
+.about {
+  margin-top: 32px;
+}
+.about .mdl-card {
+  padding-top: 96px;
+  padding-bottom: 32px;
+  text-align: center;
+}
+.avatar {
+  position: absolute;
+  z-index: 2;
+  top: 16px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+.mdl-button--raised.mdl-button--colored {
+  background: #180F24;
+  color: #fff;
+  padding: 0 32px;
+}
+.mdl-button--raised.mdl-button--colored:active,
+.mdl-button--raised.mdl-button--colored:focus,
+.mdl-button--raised.mdl-button--colored:hover {
+  /* background: #301E48; */
+  background: #C1856D;
+}
+.mdl-button--raised.mdl-button--colored i {
+  margin-left: .5rem;
+}
+.open-source-projects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.talks__list > li + li {
+  padding-top: 1rem;
+}
+.social {
+  -moz-column-count: 4;
+  -moz-column-gap: 40px;
+  -webkit-column-count: 4;
+  -webkit-column-gap: 40px;
+  column-count: 4;
+  column-gap: 40px;
+}
+/* see https://github.com/google/material-design-icons/blob/master/iconfont/codepoints */
+.mdi--loaded .mdi-account-circle:before {
+  content: "\e853";
+}
+.mdi--loaded .mdi-code:before {
+  content: "\e86f";
+}
+.mdi--loaded .mdi-extension:before {
+  content: "\e87b";
+}
+.mdi--loaded .mdi-file-download:before {
+  content: "\e2c4";
+}
+.mdi--loaded .mdi-forum:before {
+  content: "\e0bf";
+}
+.mdi--loaded .mdi-people:before {
+  content: "\e7fb";
+}
+.mdi--loaded .mdi-picture-as-pdf:before {
+  content: "\e415";
+}
+.mdi--loaded .mdi-thumb-up:before {
+  content: "\e8dc";
+}
