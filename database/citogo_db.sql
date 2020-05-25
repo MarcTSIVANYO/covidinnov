@@ -5,17 +5,50 @@
  Source Server Type    : MySQL
  Source Server Version : 100410
  Source Host           : localhost:3306
- Source Schema         : coinskills_db
+ Source Schema         : citogo_db
 
  Target Server Type    : MySQL
  Target Server Version : 100410
  File Encoding         : 65001
 
- Date: 23/05/2020 11:05:34
+ Date: 25/05/2020 08:08:29
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for acteurs
+-- ----------------------------
+DROP TABLE IF EXISTS `acteurs`;
+CREATE TABLE `acteurs`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `prenoms` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `adresse` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `contact` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `datecreation` date NULL DEFAULT NULL,
+  `profession` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `numerorccm` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `entravail` enum('O','N') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `datearret` date NULL DEFAULT NULL,
+  `produitsdispo` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `productionactuelle` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `tyacteur_id` int(5) NULL DEFAULT NULL,
+  `user_id` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `tyacteur_id`(`tyacteur_id`) USING BTREE,
+  INDEX `user_id`(`user_id`) USING BTREE,
+  CONSTRAINT `acteurs_ibfk_1` FOREIGN KEY (`tyacteur_id`) REFERENCES `typeacteurs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `acteurs_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_users`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of acteurs
+-- ----------------------------
+INSERT INTO `acteurs` VALUES (3, 'TSIVANYO', 'Marc', 'Lomé-TOGO', '123', '2020-05-25', 'Infor', 'azaz', 'O', '2020-05-25', 'O', 'azaz', '2020-05-25 01:35:34', '2020-05-25 01:41:55', 2, 23);
 
 -- ----------------------------
 -- Table structure for albums
@@ -113,6 +146,92 @@ INSERT INTO `categories` VALUES (21, 'Entrepreneuriat des jeunes', 'Entrepreneur
 INSERT INTO `categories` VALUES (22, 'Galleries', 'galleries', NULL, 1, 'REST', 1, 1, 1, '2020-05-14 22:55:16', '2020-05-14 22:55:16');
 
 -- ----------------------------
+-- Table structure for citoyens
+-- ----------------------------
+DROP TABLE IF EXISTS `citoyens`;
+CREATE TABLE `citoyens`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `prenoms` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `nationalite` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `contact` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `datenaiss` date NULL DEFAULT NULL,
+  `villenaiss` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `typepiece` enum('CNI','CENI','PASSPORT') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `numeropieces` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `civilites` enum('M','F') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `pere` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `mere` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `salaire` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `entravail` enum('O','N') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `datearret` date NULL DEFAULT NULL,
+  `nbrefemmes` int(2) NULL DEFAULT NULL,
+  `montantdepense` int(11) NULL DEFAULT NULL,
+  `aliments` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `lieuacquisition` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `marcheproche` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `boutiqueproche` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `typecitoyen_id` int(5) NULL DEFAULT NULL,
+  `region_id` int(11) NULL DEFAULT NULL,
+  `ville_id` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `marie` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `quartier` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `geolocalisation` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  `user_id` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `typecitoyen_id`(`typecitoyen_id`) USING BTREE,
+  INDEX `user_id`(`user_id`) USING BTREE,
+  CONSTRAINT `citoyens_ibfk_1` FOREIGN KEY (`typecitoyen_id`) REFERENCES `typecitoyens` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `citoyens_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_users`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of citoyens
+-- ----------------------------
+INSERT INTO `citoyens` VALUES (1, 'TSIVANYO', 'Marc', 'TOGOLAISE', '123', '2020-05-25', 'Lomé', 'PASSPORT', 'eb', NULL, 'TSIV', 'ZIK', '2000', 'O', '2020-05-25', 1, 2000, 'AZ', 'AZ', 'AZ', 'AZ', 2, 1, 'Lomé', 'GOLF', 'AZAZ', 'AZRER', '2020-05-25 02:15:38', '2020-05-25 02:23:08', 23);
+
+-- ----------------------------
+-- Table structure for citoyens_copy1
+-- ----------------------------
+DROP TABLE IF EXISTS `citoyens_copy1`;
+CREATE TABLE `citoyens_copy1`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `prenoms` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `nationalite` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `contact` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `datenaiss` datetime(0) NULL DEFAULT NULL,
+  `villenaiss` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `typepiece` enum('CNI','CENI','PASSPORT') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `numeropieces` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `civilites` enum('M','F') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `pere` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `mere` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `salaire` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `entravail` enum('O','N') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `datearret` datetime(0) NULL DEFAULT NULL,
+  `nbrefemmes` int(2) NULL DEFAULT NULL,
+  `montantdepense` int(11) NULL DEFAULT NULL,
+  `aliments` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `lieuacquisition` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `marcheproche` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `boutiqueproche` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `typecitoyen_id` int(5) NULL DEFAULT NULL,
+  `region_id` int(11) NULL DEFAULT NULL,
+  `ville_id` int(11) NULL DEFAULT NULL,
+  `marie` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `quartier` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `geolocalisation` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `typecitoyen_id`(`typecitoyen_id`) USING BTREE,
+  CONSTRAINT `citoyens_copy1_ibfk_1` FOREIGN KEY (`typecitoyen_id`) REFERENCES `typecitoyens` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
 -- Table structure for configurations
 -- ----------------------------
 DROP TABLE IF EXISTS `configurations`;
@@ -135,50 +254,39 @@ CREATE TABLE `configurations`  (
 -- ----------------------------
 -- Records of configurations
 -- ----------------------------
-INSERT INTO `configurations` VALUES (1, 'COINSKILLS', '0605698949', '0605698949', 'contact@access-togo.com', '55 SQUARE PEDRO FLORES', 'fichiers/logo-1590217196.png', 'fichiers/favicon-1589760655.PNG', 'coinskills.agencehost.com', 1, '2020-05-23 08:59:56', '2020-05-23 06:59:56');
+INSERT INTO `configurations` VALUES (1, 'CITOGO', '+228 90 33 74 53', '+228 90 33 74 53', 'contact@citogo.tg', 'Lomé, TOGO', 'fichiers/logo-1590217196.png', 'fichiers/favicon-1589760655.PNG', 'citogo.tg', 1, '2020-05-25 07:23:15', '2020-05-25 05:23:15');
 
 -- ----------------------------
--- Table structure for cv
+-- Table structure for donateurs
 -- ----------------------------
-DROP TABLE IF EXISTS `cv`;
-CREATE TABLE `cv`  (
+DROP TABLE IF EXISTS `donateurs`;
+CREATE TABLE `donateurs`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `prenoms` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `pseudo` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `adresse` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `photo` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `banner` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `lien_drive` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `experience` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `skills` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `views` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `publier` int(1) NULL DEFAULT 0,
-  `facebook` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `linkedin` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `twitter` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `instagram` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `created_at` timestamp(0) NOT NULL DEFAULT current_timestamp(0),
-  `updated_at` timestamp(0) NOT NULL DEFAULT current_timestamp(0),
+  `nationalite` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `contact` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `region_id` int(11) NULL DEFAULT NULL,
+  `ville_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `marie` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `quartier` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `geolocalisation` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `typedonateur_id` int(5) NULL DEFAULT NULL,
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
   `user_id` int(11) NULL DEFAULT NULL,
-  `recherche_id` int(11) NULL DEFAULT NULL,
-  `about` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `titre` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `localisation` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `recherche_id`(`recherche_id`) USING BTREE,
+  INDEX `typedonateur_id`(`typedonateur_id`) USING BTREE,
   INDEX `user_id`(`user_id`) USING BTREE,
-  CONSTRAINT `cv_ibfk_1` FOREIGN KEY (`recherche_id`) REFERENCES `recherches` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `cv_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_users`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  CONSTRAINT `donateurs_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_users`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `donateurs_ibfk_3` FOREIGN KEY (`typedonateur_id`) REFERENCES `typedonateurs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of cv
+-- Records of donateurs
 -- ----------------------------
-INSERT INTO `cv` VALUES (1, 'TSIVANYO', 'Marc', 'marctsivanyo@gmail.com', 'MarcTsiv', 'Lomé-TOGO', 'public/img/tsivanyomarc/profils_tsivanyomarc1589811610.jpg', 'public/img/tsivanyomarc/banner_tsivanyomarc1589811610.jpg', 'https://drive.google.com/file/d/1bUtsEns7CLNTQikZFgQZIVnael6Ex-Xp/view?usp=sharing', '<p>2019 - 2020 D&eacute;veloppeur Java/Java EE / Angular / Laravel<br />\r\nOct-F&eacute;vrier Rennes, France<br />\r\n&bull; Conception et mise en place des architectures web,<br />\r\n&bull; D&eacute;veloppement full-stack : front-end et back-end.<br />\r\nProjets :<br />\r\n&bull; AgenceHost : Mise en place d&rsquo;une application de gestion des serveurs<br />\r\nh&eacute;bergement web et de nom de domaine.<br />\r\n&bull; GESCINI : d&eacute;veloppement d&rsquo;une application au service de l&rsquo;association CINI,<br />\r\nTechnos : &bull; Vue js &bull; Laravel &bull; Node js &bull; Java /JEE &bull; Boostrap &bull; Git<br />\r\n&bull; WordPress &bull; Spring &bull; Maven &bull; TypeScript &bull; MySQL.</p>\r\n', 'JAVA, PHYTON, ANGULAR', '92', 1, 'marc.tsivanyo', 'marc-tsivanyo-21976476', 'MarcTsivanyo', 'tsivanyomarc', '2020-05-16 22:33:57', '2020-05-23 05:43:07', 1, 3, ' Hello! I\'m Marc TSIVANYO , Full Stack Developer, based in Rennes, France.\r\n                <br> \r\n                I\'ve been working in IT for more than 3 years and I love web development.', NULL, NULL);
-INSERT INTO `cv` VALUES (2, 'TSIVANYO', 'Marc', NULL, 'MarcTsiv12', 'Lomé-TOGO', '', '', 'https://drive.google.com/file/d/1bUtsEns7CLNTQikZFgQZIVnael6Ex-Xp/view?usp=sharing', '<p>2019 - 2020 D&eacute;veloppeur Java/Java EE / Angular / Laravel<br />\r\nOct-F&eacute;vrier Rennes, France<br />\r\n&bull; Conception et mise en place des architectures web,<br />\r\n&bull; D&eacute;veloppement full-stack : front-end et back-end.<br />\r\nProjets :<br />\r\n&bull; AgenceHost : Mise en place d&rsquo;une application de gestion des serveurs<br />\r\nh&eacute;bergement web et de nom de domaine.<br />\r\n&bull; GESCINI : d&eacute;veloppement d&rsquo;une application au service de l&rsquo;association CINI,<br />\r\nTechnos : &bull; Vue js &bull; Laravel &bull; Node js &bull; Java /JEE &bull; Boostrap &bull; Git<br />\r\n&bull; WordPress &bull; Spring &bull; Maven &bull; TypeScript &bull; MySQL.</p>\r\n', 'JAVA, PHYTON, ANGULAR', NULL, 1, 'a', 'a', 'a', 'a', '2020-05-16 23:01:34', '2020-05-17 00:06:35', 1, 2, NULL, NULL, NULL);
-INSERT INTO `cv` VALUES (3, 'TSIVANYO', 'Marcus', 'masfinance@mastersolut.com', 'MarcTsiv6032', '55 SQUARE PEDRO FLORES', NULL, NULL, 'https://drive.google.com/file/d/1bUtsEns7CLNTQikZFgQZIVnael6Ex-Xp/view?usp=sharing', 'AZAZ', 'AZAZ', '8', 0, 'AZ', 'AZ', 'AZ', 'AZ', '2020-05-23 03:56:45', '2020-05-23 07:16:26', 23, 2, 'AAZ', 'Informaticien', 'RENNES');
+INSERT INTO `donateurs` VALUES (2, 'TSIVANYO', 'Kodjo Nuwoza', 'TOGOLAISE', '123', 1, 'LOME', 'GOLF', '123', 'AZRER', 1, '2020-05-25 00:55:04', '2020-05-25 00:56:23', 1);
+INSERT INTO `donateurs` VALUES (6, 'TSIVANYO', 'Marc', 'TOGOLAISE', '123', 1, 'Lomé', 'GOLF', 'AEZEZR', 'AZAZ', 2, '2020-05-25 04:28:57', '2020-05-25 04:28:57', 23);
 
 -- ----------------------------
 -- Table structure for droits
@@ -201,17 +309,49 @@ CREATE TABLE `droits`  (
   CONSTRAINT `droits_ibfk_1` FOREIGN KEY (`id_sous_menus`) REFERENCES `sous_menus` (`id_sous_menus`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `droits_ibfk_2` FOREIGN KEY (`id_type_users`) REFERENCES `type_users` (`id_type_users`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `droits_ibfk_3` FOREIGN KEY (`id_menus`) REFERENCES `menus` (`id_menus`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 66 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 83 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of droits
 -- ----------------------------
-INSERT INTO `droits` VALUES (60, 1, 1, '2020-05-23 08:34:48', '2020-05-23 08:34:48', 1, NULL, 1, NULL);
-INSERT INTO `droits` VALUES (61, 1, 1, '2020-05-23 08:34:49', '2020-05-23 08:34:49', 2, NULL, 1, NULL);
-INSERT INTO `droits` VALUES (62, 1, 1, '2020-05-23 08:34:49', '2020-05-23 08:34:49', 3, NULL, 1, NULL);
-INSERT INTO `droits` VALUES (63, 1, 1, '2020-05-23 08:34:49', '2020-05-23 08:34:49', 4, NULL, 1, NULL);
-INSERT INTO `droits` VALUES (64, 1, 1, '2020-05-23 08:34:49', '2020-05-23 08:34:49', NULL, NULL, 1, 10);
-INSERT INTO `droits` VALUES (65, 1, 1, '2020-05-23 08:34:49', '2020-05-23 08:34:49', NULL, NULL, 1, 11);
+INSERT INTO `droits` VALUES (74, 1, 1, '2020-05-25 05:02:28', '2020-05-25 05:02:28', 1, NULL, 1, NULL);
+INSERT INTO `droits` VALUES (75, 1, 1, '2020-05-25 05:02:28', '2020-05-25 05:02:28', 2, NULL, 1, NULL);
+INSERT INTO `droits` VALUES (76, 1, 1, '2020-05-25 05:02:28', '2020-05-25 05:02:28', 3, NULL, 1, NULL);
+INSERT INTO `droits` VALUES (77, 1, 1, '2020-05-25 05:02:28', '2020-05-25 05:02:28', 4, NULL, 1, NULL);
+INSERT INTO `droits` VALUES (78, 1, 1, '2020-05-25 05:02:28', '2020-05-25 05:02:28', NULL, NULL, 1, 10);
+INSERT INTO `droits` VALUES (79, 1, 1, '2020-05-25 05:02:28', '2020-05-25 05:02:28', NULL, NULL, 1, 11);
+INSERT INTO `droits` VALUES (80, 1, 1, '2020-05-25 05:02:28', '2020-05-25 05:02:28', NULL, NULL, 1, 12);
+INSERT INTO `droits` VALUES (81, 1, 1, '2020-05-25 05:02:28', '2020-05-25 05:02:28', NULL, NULL, 1, 13);
+INSERT INTO `droits` VALUES (82, 1, 1, '2020-05-25 05:02:28', '2020-05-25 05:02:28', NULL, NULL, 1, 14);
+
+-- ----------------------------
+-- Table structure for enfants
+-- ----------------------------
+DROP TABLE IF EXISTS `enfants`;
+CREATE TABLE `enfants`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `prenoms` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `nationalite` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `datenaiss` date NULL DEFAULT NULL,
+  `villenaiss` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `responsabilite` enum('Tutueur','Tutrice','Pere','Mere') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `pere` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `mere` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `typepiece` enum('CNI','CENI','PASSPORT') CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `numeropieces` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `citoyen_id` int(11) NULL DEFAULT NULL,
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `citoyen_id`(`citoyen_id`) USING BTREE,
+  CONSTRAINT `enfants_ibfk_1` FOREIGN KEY (`citoyen_id`) REFERENCES `citoyens` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of enfants
+-- ----------------------------
+INSERT INTO `enfants` VALUES (1, 'TSIVANYO', 'Marc', 'TOGOLAISE', '2020-05-25', 'RENNES', 'Tutueur', 'AZAZ', 'AZAZ', 'CENI', 'AZZRER', 1, '2020-05-25 03:02:42', '2020-05-25 03:02:42');
 
 -- ----------------------------
 -- Table structure for groupe_users
@@ -252,7 +392,7 @@ CREATE TABLE `menus`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id_menus`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of menus
@@ -263,8 +403,22 @@ INSERT INTO `menus` VALUES (6, 'Pages', 'fa-book', 'admin/pages', 4, 1, 0, '2017
 INSERT INTO `menus` VALUES (7, 'Gestion des Partenaires', 'fa fa-file-text', 'admin/albums', 5, 1, 0, '2017-03-30 11:11:05', '2020-05-17 00:11:20');
 INSERT INTO `menus` VALUES (8, 'Gestion du site web', 'fa fa-cog', 'siteweb', 2, 1, 0, '2020-04-08 23:16:57', '2020-04-08 23:16:57');
 INSERT INTO `menus` VALUES (9, 'Gestion des Actualités', 'fa-newspaper-o', 'admin/page/actualites', 5, 1, 0, '2020-04-09 00:47:23', '2020-05-17 00:11:22');
-INSERT INTO `menus` VALUES (10, 'My CV', 'fa fa-list', 'admin/cv', 2, 1, 1, '2020-05-17 00:12:19', '2020-05-17 00:12:19');
+INSERT INTO `menus` VALUES (10, 'Donateurs', 'fa fa-book', 'donateurs', 2, 1, 1, '2020-05-17 00:12:19', '2020-05-17 00:12:19');
 INSERT INTO `menus` VALUES (11, 'Dashbord', 'fa fa-home', 'home', 1, 1, 1, '2020-05-23 08:34:28', '2020-05-23 08:34:28');
+INSERT INTO `menus` VALUES (12, 'Acteurs', 'fa fa-file-text', 'acteurs', 1, 1, 1, '2020-05-23 08:34:28', '2020-05-23 08:34:28');
+INSERT INTO `menus` VALUES (13, 'Citoyens', 'fa fa-users', 'citoyens', 1, 1, 1, '2020-05-23 08:34:28', '2020-05-23 08:34:28');
+INSERT INTO `menus` VALUES (14, 'Enfants', 'fa fa-user', 'enfants', 1, 1, 1, '2020-05-23 08:34:28', '2020-05-23 08:34:28');
+
+-- ----------------------------
+-- Table structure for migrations
+-- ----------------------------
+DROP TABLE IF EXISTS `migrations`;
+CREATE TABLE `migrations`  (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for pages
@@ -363,6 +517,25 @@ INSERT INTO `recherches` VALUES (3, 'Stage/Alternance');
 INSERT INTO `recherches` VALUES (4, 'Emploi');
 
 -- ----------------------------
+-- Table structure for regions
+-- ----------------------------
+DROP TABLE IF EXISTS `regions`;
+CREATE TABLE `regions`  (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `titre` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of regions
+-- ----------------------------
+INSERT INTO `regions` VALUES (1, 'MARITIME');
+INSERT INTO `regions` VALUES (2, 'PLATEAU');
+INSERT INTO `regions` VALUES (3, 'CENTRALE');
+INSERT INTO `regions` VALUES (4, 'KARA');
+INSERT INTO `regions` VALUES (5, 'SAVANE');
+
+-- ----------------------------
 -- Table structure for sections
 -- ----------------------------
 DROP TABLE IF EXISTS `sections`;
@@ -433,6 +606,56 @@ CREATE TABLE `type_users`  (
 INSERT INTO `type_users` VALUES (1, 'Administrateur', 1, NULL, NULL);
 
 -- ----------------------------
+-- Table structure for typeacteurs
+-- ----------------------------
+DROP TABLE IF EXISTS `typeacteurs`;
+CREATE TABLE `typeacteurs`  (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `titre` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of typeacteurs
+-- ----------------------------
+INSERT INTO `typeacteurs` VALUES (1, 'AGRICOLE ');
+INSERT INTO `typeacteurs` VALUES (2, 'AGROALIMENTAIRE');
+
+-- ----------------------------
+-- Table structure for typecitoyens
+-- ----------------------------
+DROP TABLE IF EXISTS `typecitoyens`;
+CREATE TABLE `typecitoyens`  (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `titre` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of typecitoyens
+-- ----------------------------
+INSERT INTO `typecitoyens` VALUES (1, 'CITOYEN RÉSIDENT ');
+INSERT INTO `typecitoyens` VALUES (2, 'EXPATRIÉ RÉSIDENT ');
+INSERT INTO `typecitoyens` VALUES (3, 'EXPATRIÉ EN TRANSIT (EN VISITE AU TOGO) ');
+
+-- ----------------------------
+-- Table structure for typedonateurs
+-- ----------------------------
+DROP TABLE IF EXISTS `typedonateurs`;
+CREATE TABLE `typedonateurs`  (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `titre` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of typedonateurs
+-- ----------------------------
+INSERT INTO `typedonateurs` VALUES (1, 'ASSOCIATION');
+INSERT INTO `typedonateurs` VALUES (2, 'ONG');
+INSERT INTO `typedonateurs` VALUES (3, 'AUTRE');
+
+-- ----------------------------
 -- Table structure for users
 -- ----------------------------
 DROP TABLE IF EXISTS `users`;
@@ -463,7 +686,7 @@ CREATE TABLE `users`  (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'TSIVANYO', 'Marc', 'M', '1970-01-01', 'contact@mastersolut.com', 'Adidogomé', '90337453', 'fichiers/1589495997.jpg', 'Lomé', 'MasterSolut', '$2y$10$PreehdzzqeJJyBUdCUQB/uqWLdKZLGQuysR69TdWLLk9AUPKE.LsO', 'CIQNDrktY66WUELAC4hNgcEIOaiMiJuCVjXYTnMx09rq3e2TjYgNubVFiKp3', 1, 1, '2017-03-29 05:46:07', '2020-05-14 22:39:57', 1, 1, NULL);
-INSERT INTO `users` VALUES (23, 'TSIVANYO', 'Marcus', 'M', '2020-05-23', 'hello@agencehost.com', 'Lomé-TOGO', '90337453', 'public/img/account/p_tsivanyomarc1590217049.jpg', 'Lomé', NULL, '$2y$10$xsvUDfV088jMq1pRt2j6fOQHD2R8drWtBZ.MNSASwe6Bvct7idg/.', 'gVcWznDKeJ7NnxuCxVRtnJvgZXPYe8fBxEa0EEK7agOxduupnqKOXM1jpTMu', 1, 1, '2020-05-21 15:16:10', '2020-05-23 06:57:36', 0, NULL, '6q3tNmSe8ewsbAXbDIZ7Ows8QTXWka1590074170');
+INSERT INTO `users` VALUES (1, 'TSIVANYO', 'Marc', 'M', '1970-01-01', 'contact@mastersolut.com', 'Adidogomé', '90337453', 'fichiers/1589495997.jpg', 'Lomé', 'MasterSolut', '$2y$10$PreehdzzqeJJyBUdCUQB/uqWLdKZLGQuysR69TdWLLk9AUPKE.LsO', 'VuXvnI02Nild2AYMzw5xO7XLKMviiu9pUPB7ppblTimoEX8oXxuqlH1fTBxk', 1, 1, '2017-03-29 05:46:07', '2020-05-14 22:39:57', 1, 1, NULL);
+INSERT INTO `users` VALUES (23, 'TSIVANYO', 'Marcus', 'M', '2020-05-23', 'hello@agencehost.com', 'Lomé-TOGO', '90337453', 'public/img/account/p_tsivanyomarc1590217049.jpg', 'Lomé', NULL, '$2y$10$xsvUDfV088jMq1pRt2j6fOQHD2R8drWtBZ.MNSASwe6Bvct7idg/.', '6EM067ff7jrvXLW3Muvz8Eu2UkVRAUGQDAYyRJcr1OhDXiyKmwyF7TOsgocg', 1, 1, '2020-05-21 15:16:10', '2020-05-23 06:57:36', 0, NULL, '6q3tNmSe8ewsbAXbDIZ7Ows8QTXWka1590074170');
 
 SET FOREIGN_KEY_CHECKS = 1;

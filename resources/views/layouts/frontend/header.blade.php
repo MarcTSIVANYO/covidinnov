@@ -1,7 +1,7 @@
 <header class="top-header">
     <nav class="navbar header-nav navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/"><img src="{{ asset($config->logo) }}" alt="image"></a>
+            <a class="navbar-brand" href="/"><h2 style="font-size: 50px;">{{$config->nom_site}}</h2></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-wd" aria-controls="navbar-wd" aria-expanded="false" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
@@ -11,11 +11,12 @@
                 <ul class="navbar-nav">
                     <li><a class="nav-link active" href="{{URL::To('/')}}">ACCUEIL</a></li>
                     <li><a class="nav-link" href="{{url('/apropos')}}">Apropos</a></li> 
-                    <li><a class="nav-link" href="{{url('/contact')}}">Contact</a></li>
+                    <li><a class="nav-link" href="{{url('/riposte')}}">RIPOSTE </a></li>
+                    <li><a class="nav-link" href="{{url('/#contact')}}">Contact</a></li>
                     <li>
-                        <a class="nav-link" href="{{url('/mycv')}}"
-                        style="background:#17a2b8;color:#fff;"> 
-                                PUBLIER MON CV
+                        <a class="nav-link" href="{{url('/inscrire')}}"
+                        style="background:#fd7e14; color:#fff;"> 
+                                AJOUTER 
                         </a>
                     </li>
                     <li>
@@ -35,12 +36,12 @@
                       </li> -->
                 </ul>
             </div>
-            <div class="search-box">
+          <!--   <div class="search-box">
                 <input type="text" class="search-txt" placeholder="Search">
                 <a class="search-btn">
                     <img src="{{ asset('resources/assets/frontend/images/search_icon.png') }}" alt="#" />
                 </a>
-            </div>
+            </div> -->
         </div>
     </nav>
 </header>

@@ -20,40 +20,26 @@
         <div class="container">
             
             <div class="row">
-           
-                <div class="col-lg-5 col-sm-5 col-xs-12">
-                    <div class="left-contact">
-                        <div class="media cont-line">
-                            <div class="media-left icon-b">
-                                <i class="fa fa-location-arrow" aria-hidden="true"></i>
-                            </div>
-                            <div class="media-body dit-right">
-                                <h4>Mon CV en ligne</h4>
-                                <p>Faites-vous remarquer par les recruteurs</p>
-                            </div>
-                        </div>
-                        <div class="media cont-line">
-                            <div class="media-left icon-b">
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                            </div>
-                            <div class="media-body dit-right">
-                                <h4>Email</h4>
-                                <a href="#">demoinfo@gmail.com</a><br>
-                                <a href="#">demoinfo@gmail.com</a>
-                            </div>
-                        </div>
-                        <div class="media cont-line">
-                            <div class="media-left icon-b">
-                                <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
-                            </div>
-                            <div class="media-body dit-right">
-                                <h4>Phone Number</h4>
-                                <a href="#">12345 67890</a><br>
-                                <a href="#">12345 67890</a>
-                            </div>
+                <div class="col-md-12">
+                    <div class="full center">
+                        <div class="heading_main text_align_center">
+                            <h2><span class="theme_color">APPLICATION CiToGo </span></h2>
+                            <p class="large">Apropos !</p>
                         </div>
                     </div>
+                    <div class="full center">
+                        <p >
+                            La définition de toute stratégie au bénéfice d’une population repose sur une bonne connaissance du territoire et surtout de ses différentes composantes sociodémographiques, et structurelles.<br/><br/> 
+                            La composante socio démographique permet de maîtriser les différents types de personnes qui composent la population alors que la composante structurelle permet de déceler les différentes dynamiques et différents regroupements existants au sein de cette population. 
+                            L’application est scindée en quatre parties dont une partie d’enregistrement des acteurs et trois parties d’interactions. <br/><br/>
+                            Ce qui est très important est que chaque utilisateur doit retrouver les résultats de ses recherches suivant le quartier dans lequel il se trouve et après lui-même peut modifier les quartiers, augmenter ou pas la zone géographique à afficher. 
+
+                        </p>
+                    </div>
                 </div>
+           
+                
+
 
 
             </div>

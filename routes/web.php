@@ -13,20 +13,31 @@
 use App\User;
 use App\CV;
 Auth::routes();
-   
+  
+  // FRONTEND
 Route::resource('/', 'FrontendController'); 
-Route::get('home', 'HomeController@index')->name('home');
 Route::get('activate/{token}', 'RegistrationController@activateUser')
     ->name('activate.user');
  //Route::get('login', function () {return view('frontend.login');}); 
  Route::get('/contact', function () {return view('frontend.contact');});
  Route::get('/apropos', function () {return view('frontend.apropos');});
  Route::get('/welcome', function () {return view('frontend.welcome');});
-Route::resource('dashboard', 'HomeController');
+
 Route::resource('inscrire', 'RegistrationController');
 // utilisateur
 Route::get('password/email', 'passwordController@index')->name('password.email');
 Route::get('password/reset', 'passwordController@password_update')->name('password.update');
+
+ //BACKEND AFTER LOGIN
+Route::get('home', 'HomeController@index')->name('home');
+Route::resource('dashboard', 'HomeController');
+//APP FONCTIONNALITY
+Route::resource('donateurs', 'DonateurController');
+Route::resource('acteurs', 'ActeurController');
+Route::resource('citoyens', 'CitoyenController');
+Route::resource('enfants', 'EnfantController');
+Route::get('citoyen/{id}','EnfantController@indexByCitoyen');
+
 
 Route::group([
     'prefix' => 'account', 
@@ -47,14 +58,7 @@ Route::group([
 	Route::post('password/reset','HomeController@password');
       
     });
-
-	Route::get('mycv',function () {  
-     	$user=User::where('id_users',Auth::user()->id_users)->first();
-     	$cv=CV::where('user_id',Auth::user()->id_users)->first(); 
-	    return view('account.mycv',compact('cv','user'));
-	})->middleware('user');
-
-	Route::post('mycv', 'CVController@store')->middleware('user');
+ 
 
 /*********PARTIE D'ADMIISTRATION DU SITE WEB*******/
 
@@ -64,8 +68,7 @@ Route::group([
 	], function ()
 	{ 
 
- 	//Route::get('/login', function () {return view('auth.login');});
-		Route::resource('cv', 'CVController');
+ 	//Route::get('/login', function () {return view('auth.login');}); 
 		Route::get('enable_cv/{id}','CVController@enable');
 		Route::get('desable_cv/{id}','CVController@desable');
 
@@ -125,8 +128,7 @@ Route::get('sous_menus/list_by/{id}','SousMenusController@listBy');
 /**		Droits	**/
 Route::resource('droits','DroitsController');
 Route::get('droits_users/{id}','utilisateursController@droits');
- 
-Route::get('{url}','CVController@cvPage');
+  
 Route::any('/{page?}',function(){
   return View::make('errors.404');
 })->where('page','.*');

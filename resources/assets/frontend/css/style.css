@@ -277,6 +277,7 @@ LOADER
      font-weight: 400;
      overflow: hidden;
      color: #000;
+     font-weight: bold;
 }
  a.navbar-brand {
      left: 35px;

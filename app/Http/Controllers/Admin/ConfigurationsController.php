@@ -132,6 +132,7 @@ class ConfigurationsController extends Controller
         $configuration->cel=$request->cel; 
         $configuration->adresse_physique=$request->adresse_physique;
         $configuration->url=$request->url; 
+        $configuration->email=$request->email; 
         $file_logo = $request->file('logo'); 
         if($file_logo)
         { 

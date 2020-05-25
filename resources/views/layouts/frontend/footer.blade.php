@@ -1,5 +1,5 @@
    <!-- Start Footer -->
-    <footer class="footer-box">
+    <footer class="footer-box" id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -42,7 +42,7 @@
                 </div>
 
             </div>
-            <div class="row white_fonts margin-top_30">
+     <!--        <div class="row white_fonts margin-top_30">
                 <div class="col-lg-12">
                     <div class="full">
                         <div class="center">
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </footer>
     <!-- End Footer -->
@@ -64,10 +64,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <p class="crp">&copy; {{ date('Y') }} {{ config('app.name') }}. All rights reserved.</p>
+                    <p class="crp">&copy; {{ date('Y') }} {{$config->nom_site}}. All rights reserved.</p>
                     <ul class="bottom_menu">
-                        <li><a href="{{url('apropos')}}">Apropos</a></li>
-                        <li><a href="#">Find jobs</a></li>
+                        <li><a href="{{url('apropos')}}">Apropos</a></li> 
                         <li><a href="#">CGU</a></li> 
                         <li><a href="{{url('contact')}}">Contact</a></li>
                     </ul>

@@ -44,7 +44,7 @@
    <!-- Image Plugin-->
    <link rel="stylesheet" href="{{ asset('/resources/assets/jasny/extend/css/jasny-bootstrap.min.css') }}"> 
  
-  <link rel="shortcut icon" href="../{{ $configuration->favicon }}"  /> 
+  <link rel="shortcut icon" href="{{ asset($configuration->favicon) }}"  /> 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->

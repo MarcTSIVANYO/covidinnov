@@ -2,7 +2,7 @@
 <html lang="en">
 <!-- Basic -->
 <?php 
-    use App\Configuration; 
+    use App\Configuration;  
     $config = Configuration::first();
 ?>
 <head>

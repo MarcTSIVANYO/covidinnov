@@ -20,11 +20,12 @@ class CreateDonateursTable extends Migration
             $table->string('nationalite', 255);
             $table->string('contact', 255);
             $table->integer('region_id');
-            $table->integer('ville_id');
+            $table->string('ville_id', 255);
             $table->string('marie', 255);
             $table->string('quartier', 255);
             $table->string('geolocalisation', 255);
             $table->integer('typedonateur_id');
+            $table->integer('user_id');
             $table->timestamps();
             $table->index(["typedonateur_id"]);
         });

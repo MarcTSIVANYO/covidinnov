@@ -1,7 +1,10 @@
 @extends('layouts.frontend.base')
 
 @section('content')
-
+<?php 
+    use App\Configuration;  
+    $config = Configuration::first();
+?>
   
     <!-- section --> 
        <div class="innerpage_banner">
@@ -90,8 +93,8 @@
                                 <i class="fa fa-location-arrow" aria-hidden="true"></i>
                             </div>
                             <div class="media-body dit-right">
-                                <h4>Mon CV en ligne</h4>
-                                <p>Faites-vous remarquer par les recruteurs</p>
+                                <h4>Adresse :</h4>
+                                <p>{{ $config->adresse_physique }}</p>
                             </div>
                         </div>
                         <div class="media cont-line">
@@ -99,9 +102,8 @@
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
                             </div>
                             <div class="media-body dit-right">
-                                <h4>Email</h4>
-                                <a href="#">demoinfo@gmail.com</a><br>
-                                <a href="#">demoinfo@gmail.com</a>
+                                <h4>Email :</h4>
+                                <a href="#">{{ $config->email }}</a><br> 
                             </div>
                         </div>
                         <div class="media cont-line">
@@ -109,9 +111,8 @@
                                 <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
                             </div>
                             <div class="media-body dit-right">
-                                <h4>Phone Number</h4>
-                                <a href="#">12345 67890</a><br>
-                                <a href="#">12345 67890</a>
+                                <h4>Téléphone :</h4>
+                                <a href="#">{{ $config->telephone }}</a><br> 
                             </div>
                         </div>
                     </div>

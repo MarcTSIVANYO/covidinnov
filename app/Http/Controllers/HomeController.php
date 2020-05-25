@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Auth;
 use App\User;
-use App\CV;
+use App\Acteur;
+use App\Donateur;
+use App\Citoyen;
 
 class HomeController extends Controller
 {
@@ -31,16 +33,16 @@ class HomeController extends Controller
     public function index()
     {  
         if (Auth::user()->admin==1) {    
-            $all=Cv::get()->count(); 
-            $valide=Cv::where('publier',1)->get()->count(); 
-            $wait=Cv::where('publier',0)->get()->count(); 
-            return view('dashboard.admin', compact('all','valide','wait'));
+            $citoyens=Citoyen::get()->count(); 
+            $donateurs=Donateur::get()->count(); 
+            $acteurs=Acteur::get()->count();  
+            return view('dashboard.admin', compact('acteurs','donateurs','citoyens'));
         }
 
         if (Auth::user()->admin==0) {    
-            return view('frontend.home'); 
+            return view('citogo.dashboard'); 
         }
-        return view('frontend.home'); 
+        return view('citogo.dashboard'); 
     }
 
     public function editerCompte(request $request)

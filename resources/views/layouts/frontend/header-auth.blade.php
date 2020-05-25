@@ -1,7 +1,7 @@
 <header class="top-header">
     <nav class="navbar header-nav navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html"><img src="{{ asset($config->logo) }}" alt="image"></a>
+            <a class="navbar-brand" href="index.html"><h2 style="font-size: 50px;">{{$config->nom_site}}</h2></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-wd" aria-controls="navbar-wd" aria-expanded="false" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
@@ -14,7 +14,7 @@
                       if (Auth::user()->admin==0) {  
                   ?>
                     <li>
-                      <a class="nav-link" class="{{ (request()->is('mycv')) ? 'active' : '' }}" href="{{url('mycv')}}">MON CV ON LIGNE</a></li> 
+                      <a class="nav-link" class="{{ (request()->is('dashboard')) ? 'active' : '' }}" href="{{url('dashboard')}}">Dashbord</a></li> 
                     
                      <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" style="background:#fff;color:#000;" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
