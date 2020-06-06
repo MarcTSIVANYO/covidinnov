@@ -4,7 +4,7 @@
 
   
     <!-- section --> 
-        <div class="container-fluid pb-4 pt-4 paddding">
+    <div class="container-fluid pb-4 pt-4 paddding">
     <div class="container paddding">
         <div class="row mx-0">
             <div class="col-md-8 offset-md-2 animate-box" data-animate-effect="fadeInLeft">
@@ -13,30 +13,28 @@
                         <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4"> Nous contacter</div>
                     </div>
                      <div class="animated-fast" data-animate-effect="fadeInLeft" > 
-                            
-                                <form id="contactForm" class="form-horizontal">
+                    {!! Form::open(['route'=>'contactus.store', 'class' => 'form-horizontal']) !!} 
                       <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input type="text" placeholder="Nom & Prénoms *" id="email" class="form-control" name="nomprenoms" required  >
+                                <input type="text" placeholder="Nom & Prénoms *" id="email" class="form-control" name="name" required  >
                                 <div class="help-block with-errors"></div>
                             </div> 
                         </div>
                         <div class="col-sm-12">
                           <div class="form-group">
-                            <input class="form-control" name="email"  type="email" placeholder="Email*"    required="" ">
+                            <input class="form-control" name="email"  type="email" placeholder="Email *"    required="">
                           </div>
                         </div>
                         <div class="col-sm-12">
                           <div class="form-group">
-                                <input class="form-control" name="objet"  type="email" placeholder="Objet *"    required="" ">
+                                <input class="form-control" name="objet"  type="email" placeholder="Objet *"    required="">
                           </div>
                         </div>
                         <div class="col-sm-12">
                           <div class="form-group">
                             <textarea class="form-control" name="messages" 
-                                    rows="5" cols="33" required="" placeholder="Message *">Votre message
-                                
+                                    rows="5" cols="33" required="" placeholder="Message *">Votre message 
                             </textarea>  
                           </div>
                         </div> 
@@ -54,8 +52,8 @@
                                 <div class="clearfix"></div> 
                             </div>
                         </div>
-                      </div>            
-                    </form>
+                      </div>   
+                      {!! Form::close() !!} 
                         
                     </div>
  

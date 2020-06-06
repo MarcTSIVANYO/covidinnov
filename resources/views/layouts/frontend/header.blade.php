@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-12 fh5co_mediya_center">
                 <a href="#" class="color_fff fh5co_mediya_setting"> 
-                <div class="d-inline-block fh5co_trading_posotion_relative"><a href="#" class="treding_btn">COVID INNOVATION </a> 
+                <div class="d-inline-block fh5co_trading_posotion_relative"><a href="{{url('/')}}" class="treding_btn">COVID INNOVATION </a> 
                 </div>
                 <a href="#" class="color_fff fh5co_mediya_setting">Luttons ensemble contre le Covid-19</a>
             </div>

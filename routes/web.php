@@ -36,7 +36,7 @@ Route::resource('dashboard', 'HomeController');
 	Route::post('submitInnov', 'Innov\\InnovationController@store'); 
 
  Route::get('/categorie/{name}', 'Innov\\InnovationController@categorie'); 
-
+Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ContactUSController@contactUSPost']);
 
 Route::group([
     'prefix' => 'account', 
@@ -67,7 +67,7 @@ Route::group([
 	], function ()
 	{ 
 
-//APP FONCTIONNALITY
+		//APP FONCTIONNALITY
 		Route::resource('innovations', 'Innov\\InnovationController'); 
 		Route::get('enable_innovation/{id}','Innov\\InnovationController@enable')->where('id', '[0-9]+');
 		Route::get('desable_innovation/{id}','Innov\\InnovationController@desable')->where('id', '[0-9]+');
