@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; 
+use App\Innovation; 
+use Illuminate\Support\Facades\DB;
 
 class FrontendController extends Controller
 {
@@ -16,6 +18,7 @@ class FrontendController extends Controller
           return view('clientarea.dashboard');
         }  */
 
-        return view('frontend.home');
+        $innovations = Innovation::where('publier',1)->paginate(10);
+        return view('frontend.home', compact('innovations'));
     }
 }

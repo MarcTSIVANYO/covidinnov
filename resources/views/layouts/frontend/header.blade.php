@@ -1,47 +1,61 @@
-<header class="top-header">
-    <nav class="navbar header-nav navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/"><h2 style="font-size: 50px;">{{$config->nom_site}}</h2></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-wd" aria-controls="navbar-wd" aria-expanded="false" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbar-wd">
-                <ul class="navbar-nav">
-                    <li><a class="nav-link active" href="{{URL::To('/')}}">ACCUEIL</a></li>
-                    <li><a class="nav-link" href="{{url('/apropos')}}">Apropos</a></li> 
-                    <li><a class="nav-link" href="{{url('/riposte')}}">RIPOSTE </a></li>
-                    <li><a class="nav-link" href="{{url('/#contact')}}">Contact</a></li>
-                    <li>
-                        <a class="nav-link" href="{{url('/inscrire')}}"
-                        style="background:#fd7e14; color:#fff;"> 
-                                AJOUTER 
+<style type="text/css">
+    /*.navbar-light  {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}*/
+</style>
+
+<div class="container-fluid fh5co_header_bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 fh5co_mediya_center">
+                <a href="#" class="color_fff fh5co_mediya_setting"> 
+                <div class="d-inline-block fh5co_trading_posotion_relative"><a href="#" class="treding_btn">COVID INNOVATION </a> 
+                </div>
+                <a href="#" class="color_fff fh5co_mediya_setting">Luttons ensemble contre le Covid-19</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-12 fh5co_padding_menu" align="center">
+                <img src="{{ asset($config->logo) }}" alt="img" class="fh5co_logo_width"/> <br/><br/>
+                <h4>Référencement des outils numériques COVID-19</h4>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div class="container-fluid bg-faded fh5co_padd_mediya padding_786">
+    <div class="container padding_786">
+
+        <nav class="navbar navbar-toggleable-md navbar-light ">
+            <button class="navbar-toggler navbar-toggler-right mt-3" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation"><span class="fa fa-bars"></span></button>
+            <a class="navbar-brand" href="#"><img src="{{ asset('resources/assets/frontend/images/logo.png') }}" alt="img" class="mobile_logo_width"/></a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent"  align="center" style="text-align: center;">
+                <ul class="navbar-nav mr-auto" style="text-align: center;">
+                    <li class="nav-item "> 
+                        <a class="nav-link " href="{{URL::To('/')}}">Accueil</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{url('/apropos')}}">Apropos <span class="sr-only">(current)</span></a>
+                    </li> 
+                     
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{url('/contact')}}">Contact <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link active" style="background:#fff;color:#000;" href="{{url('/submit-innovation')}}">
+                                Soumettre votre innovation
                         </a>
                     </li>
-                    <li>
-                        <a class="nav-link active" style="background:#fff;color:#000;" href="{{url('/login')}}">
-                                Se connecter
-                        </a>
-                    </li>
-                    <!--  <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Dropdown link
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                      </li> -->
                 </ul>
             </div>
-          <!--   <div class="search-box">
-                <input type="text" class="search-txt" placeholder="Search">
-                <a class="search-btn">
-                    <img src="{{ asset('resources/assets/frontend/images/search_icon.png') }}" alt="#" />
-                </a>
-            </div> -->
-        </div>
-    </nav>
-</header>
+        </nav>
+    </div>
+</div>

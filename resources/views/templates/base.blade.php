@@ -350,10 +350,8 @@
     });
   });
 // $('textarea').ckeditor();
-
-CKEDITOR.replace( 'experience' );
-CKEDITOR.replace( 'article-ckeditor' );
-CKEDITOR.replace( 'about' );
+ 
+CKEDITOR.replace( 'article-ckeditor' ); 
 </script>
 </body>
 </html>

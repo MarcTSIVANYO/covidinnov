@@ -10,6 +10,11 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbar-wd">
                 <ul class="navbar-nav">
                     <li><a class="nav-link active" href="{{URL::To('/')}}">ACCUEIL</a></li> 
+                     <li>
+                        <a class="nav-link active" style="background:#fff;color:#000;" href="{{url('/submit-innovation')}}">
+                                Soumettre
+                        </a>
+                    </li>
                    <?php 
                       if (Auth::user()->admin==0) {  
                   ?>

@@ -31,12 +31,11 @@ Route::get('password/reset', 'passwordController@password_update')->name('passwo
  //BACKEND AFTER LOGIN
 Route::get('home', 'HomeController@index')->name('home');
 Route::resource('dashboard', 'HomeController');
-//APP FONCTIONNALITY
-Route::resource('donateurs', 'DonateurController');
-Route::resource('acteurs', 'ActeurController');
-Route::resource('citoyens', 'CitoyenController');
-Route::resource('enfants', 'EnfantController');
-Route::get('citoyen/{id}','EnfantController@indexByCitoyen');
+//APP FONCTIONNALITY 
+ Route::get('/submit-innovation', function () {return view('frontend.innovation');}); 
+	Route::post('submitInnov', 'Innov\\InnovationController@store'); 
+
+ Route::get('/categorie/{name}', 'Innov\\InnovationController@categorie'); 
 
 
 Route::group([
@@ -68,9 +67,11 @@ Route::group([
 	], function ()
 	{ 
 
- 	//Route::get('/login', function () {return view('auth.login');}); 
-		Route::get('enable_cv/{id}','CVController@enable');
-		Route::get('desable_cv/{id}','CVController@desable');
+//APP FONCTIONNALITY
+		Route::resource('innovations', 'Innov\\InnovationController'); 
+		Route::get('enable_innovation/{id}','Innov\\InnovationController@enable')->where('id', '[0-9]+');
+		Route::get('desable_innovation/{id}','Innov\\InnovationController@desable')->where('id', '[0-9]+');
+		Route::get('show_innovation/{id}','Innov\\InnovationController@show')->where('id', '[0-9]+');
 
 		Route::resource('configurations', 'Admin\\ConfigurationsController');
 		Route::resource('sections', 'Admin\\SectionsController');
@@ -89,8 +90,8 @@ Route::group([
 
 Route::resource('utilisateurs','utilisateursController');
 Route::get('enable_users/{id}','utilisateursController@enable_users');
-Route::get('edit_profile/{id}','utilisateursController@edit_profile');
-Route::get('desable_users/{id}','utilisateursController@desable_users');
+Route::get('edit_profile/{id}','utilisateursController@edit_profile')->where('id', '[0-9]+');
+Route::get('desable_users/{id}','utilisateursController@desable_users')->where('id', '[0-9]+');
 Route::get('visible_users/{id}','utilisateursController@visible_users');
 Route::get('logout', 'Auth\LoginController@logout');
 
@@ -129,6 +130,7 @@ Route::get('sous_menus/list_by/{id}','SousMenusController@listBy');
 Route::resource('droits','DroitsController');
 Route::get('droits_users/{id}','utilisateursController@droits');
   
+Route::get('{url}','Innov\\InnovationController@single');
 Route::any('/{page?}',function(){
   return View::make('errors.404');
 })->where('page','.*');

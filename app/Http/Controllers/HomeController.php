@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Auth;
 use App\User;
-use App\Acteur;
+use App\Innovation;
 use App\Donateur;
 use App\Citoyen;
 
@@ -33,10 +33,8 @@ class HomeController extends Controller
     public function index()
     {  
         if (Auth::user()->admin==1) {    
-            $citoyens=Citoyen::get()->count(); 
-            $donateurs=Donateur::get()->count(); 
-            $acteurs=Acteur::get()->count();  
-            return view('dashboard.admin', compact('acteurs','donateurs','citoyens'));
+            $innovations=Innovation::get()->count();   
+            return view('dashboard.admin', compact('innovations'));
         }
 
         if (Auth::user()->admin==0) {    

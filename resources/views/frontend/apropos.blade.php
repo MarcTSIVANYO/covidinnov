@@ -1,47 +1,28 @@
 @extends('layouts.frontend.base')
 
 @section('content')
+ 
 
-  
-    <!-- section --> 
-       <div class="innerpage_banner">
-          <div class="container">
-             <div class="row"> 
-                <div class="col-md-12">
-                   <h2>Apropos</h2>
+  <div class="container-fluid pb-4 pt-4 paddding">
+    <div class="container paddding">
+        <div class="row mx-0">
+            <div class="col-md-8 offset-md-2 animate-box" data-animate-effect="fadeInLeft">
+
+                    <div>
+                        <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4"> A Propos</div>
+                    </div>
+                     <div class="animated-fast" data-animate-effect="fadeInLeft" > 
+                            
+                        <p style="text-align: justify;">
+                            Covid Innovations vous est présenté par MasterSolut GROUP et ses partenaires. Nous (nos équipes et nos communautés) aimons repérer les tendances et les innovations et nous aimons aider ceux qui souhaitent avoir un impact positif. Nous ajouterons quotidiennement des initiatives inspirantes à ce site, aussi longtemps que nécessaire à travers la communication. <br/><br/>
+                            Quoi qu'il en soit, si vous voulez en faire ou en apprendre davantage maintenant, rejoignez également notre équipe pour lutter ensemble. Et si vous repérez d'autres innovations intéressantes liées à COVID, ou si vous venez de lancer la vôtre: veuillez <a href="{{url('submit-innovation')}}"> soumettre votre innovation</a>
+                            
+                        </p> 
+                        
+                    </div>
+ 
                 </div>
-             </div>
-          </div>
-       </div>
-    <!-- end section -->
-    
-    <!-- section -->
-    <div id="contact" class="contact-box">
-        <div class="container">
             
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="full center">
-                        <div class="heading_main text_align_center">
-                            <h2><span class="theme_color">APPLICATION CiToGo </span></h2>
-                            <p class="large">Apropos !</p>
-                        </div>
-                    </div>
-                    <div class="full center">
-                        <p >
-                            La définition de toute stratégie au bénéfice d’une population repose sur une bonne connaissance du territoire et surtout de ses différentes composantes sociodémographiques, et structurelles.<br/><br/> 
-                            La composante socio démographique permet de maîtriser les différents types de personnes qui composent la population alors que la composante structurelle permet de déceler les différentes dynamiques et différents regroupements existants au sein de cette population. 
-                            L’application est scindée en quatre parties dont une partie d’enregistrement des acteurs et trois parties d’interactions. <br/><br/>
-                            Ce qui est très important est que chaque utilisateur doit retrouver les résultats de ses recherches suivant le quartier dans lequel il se trouve et après lui-même peut modifier les quartiers, augmenter ou pas la zone géographique à afficher. 
-
-                        </p>
-                    </div>
-                </div>
-           
-                
-
-
-
             </div>
         </div>
     </div>
