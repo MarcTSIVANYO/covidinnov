@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-12 col-md-12 fh5co_padding_menu" align="center">
                 <img src="{{ asset($config->logo) }}" alt="img" class="fh5co_logo_width"/> <br/><br/>
-                <h4>Référencement des outils numériques COVID-19</h4>
+                <h4>Référencement des innovations COVID-19</h4>
             </div>
             
         </div>
@@ -36,7 +36,7 @@
             <button class="navbar-toggler navbar-toggler-right mt-3" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation"><span class="fa fa-bars"></span></button>
-            <a class="navbar-brand" href="#"><img src="{{ asset('resources/assets/frontend/images/logo.png') }}" alt="img" class="mobile_logo_width"/></a>
+            <a class="navbar-brand" href="#"><img src="{{ asset($config->logo) }}" alt="img" class="mobile_logo_width"/></a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent"  align="center" style="text-align: center;">
                 <ul class="navbar-nav mr-auto" style="text-align: center;">
                     <li class="nav-item "> 

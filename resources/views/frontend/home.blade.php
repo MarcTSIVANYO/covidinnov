@@ -26,7 +26,7 @@
                             </div>
                             <div class="col-md-7 animate-box">
                                 <a href="{{url($innov->lien)}}" class="fh5co_magna py-2" title="Lire Plus"> {{ $innov->titre}} </a> <br/>
-                                <a href="{{url($innov->lien)}}" class="fh5co_mini_time py-3" title="Lire Plus"> {{ $type[0]->titre}} </a>
+                                <a href="{{url($innov->lien)}}" class="fh5co_mini_time py-3" title="{{ $type[0]->titre}}" style=" color: #f5bc04; text-decoration: underline;"> {{ $type[0]->titre}} </a>
                                 <div class="fh5co_consectetur justify-content-center" > 
                                     <p style="text-align: justify;">
                                         <?php 
@@ -62,7 +62,12 @@
                             {{$thisInnovation->description}}
                             
                         </p> 
+                        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5edd607ed5e5d0d4"></script>
                         
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <div class="addthis_inline_share_toolbox"></div>
+            
                     </div>
                     @endif
                 </div>

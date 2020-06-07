@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\ContactUS;
+use Mail;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class ContactUSController extends Controller
 {
@@ -25,6 +28,8 @@ class ContactUSController extends Controller
     */
    public function contactUSPost(Request $request)
    {
+   	//dd($request->all());
+   	if($request->robot==14){
        $this->validate($request, [
         'name' => 'required',
         'objet' => 'required',
@@ -44,6 +49,11 @@ class ContactUSController extends Controller
 	              $m->from($data['email'], $data['name']);
 	              $m->to(env('MAIL_USERNAME'), 'Depuis Nous contacter')->subject($data['objet']);
 	          });
-    	return back()->with('success', 'Merci de nous avoir contacté!');  
+          Session::flash('flash_message', 'Votre message nous est bien parvenu! Nous vous remercions!'); 
+          return redirect()->back(); 
+    	}else{ 
+          Session::flash('error_message', 'Résultat de 4+10 est incorrect '); 
+          return redirect()->back(); 
+    	}
    }
 }

@@ -4,7 +4,7 @@
 		<title></title>
 	</head>
 	<body> 
-		  You received a message from : {{ $name }}
+		  You received a message from : {{ env('APP_NAME') }}
 			<p>
 			Name: {{ $name }}
 			</p>

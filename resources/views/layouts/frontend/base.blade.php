@@ -10,10 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>@if(isset($title)) {{$title}} @else {{env('TITLE_APP')}} @endif</title>
+    <title>@if(isset($title)) {{$title}} - {{env('TITLE_APP')}} @else {{env('TITLE_APP')}} @endif</title>
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="{{ asset($config->favicon) }}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ asset('public/img/favicon.png')}}" type="image/x-icon" />
     <link rel="apple-touch-icon" href="{{ asset($config->favicon) }}" />
     <link href="{{ asset('resources/assets/frontend/css/media_query.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('resources/assets/frontend/css/bootstrap.css') }}" rel="stylesheet" type="text/css"/>

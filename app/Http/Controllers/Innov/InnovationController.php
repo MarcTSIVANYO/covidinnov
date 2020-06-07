@@ -221,7 +221,7 @@ class InnovationController extends Controller
             $orthers=Innovation::where('id','<>', $thisInnovation->id)->where('publier',1)->where('type_innovation_id', $thisInnovation->type_innovation_id)->get(); 
             $thisInnovation->views+=1;
             $thisInnovation->save(); 
-            $title=$thisInnovation->title; 
+            $title=$thisInnovation->titre; 
             return view('frontend.home',compact('title','thisInnovation','types','orthers'));
         }
     }

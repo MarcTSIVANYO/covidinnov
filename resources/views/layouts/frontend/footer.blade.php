@@ -16,7 +16,7 @@
                     <h4>Restez connecté et recevez une mise à jour d'innovation dans votre boîte de réception!</h4><div class="clearfix"></div>
                 <div class="input-group">
                     <span class="input-group-addon fh5co_footer_text_box" id="basic-addon1"><i class="fa fa-envelope"></i></span>
-                    <input type="text" class="form-control fh5co_footer_text_box" placeholder="Enter your email..." aria-describedby="basic-addon1">
+                    <input type="text" class="form-control fh5co_footer_text_box" placeholder="Entrez votre email..." aria-describedby="basic-addon1">
                     <a href="https://hostingsolut.us19.list-manage.com/subscribe/post?u=585e0cb8bded7267d82bd4aec&id=5cdb6ad4c3" class="input-group-addon fh5co_footer_subcribe" id="basic-addon12" target="_blank"> <i class="fa fa-paper-plane-o"></i>&nbsp;&nbsp;Souscrire</a>
                 </div>
             </div>
