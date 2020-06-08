@@ -51,8 +51,9 @@
         <div class="col-md-2 {{ $errors->has('url') ? 'has-error' : ''}}" >
             {!! Form::label('url', 'Site web : ', ['class' => 'control-label']) !!} 
         </div>
-        <div class="col-md-4">
-            {!! Form::text('url', null, ['class' => 'form-control']) !!}
+        <div class="col-md-4"> 
+            <input type="text" placeholder="https:// "  class="form-control" name="url" value="@if(isset($list)) $list->url @endif">
+
             {!! $errors->first('url', '<p class="help-block">:message</p>') !!}
         </div>
 

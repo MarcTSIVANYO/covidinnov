@@ -22,7 +22,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-12 fh5co_padding_menu" align="center">
-                <img src="{{ asset($config->logo) }}" alt="img" class="fh5co_logo_width"/> <br/><br/>
+                <img src="{{ asset($config->logo) }}" alt="img" class="fh5co_logo_width" style="width: 200px;" /> <br/><br/>
                 <h4>Référencement des innovations COVID-19</h4>
             </div>
             

@@ -62,9 +62,14 @@
                             {{$thisInnovation->description}}
                             
                         </p> 
+                        <p >
+                            @if(isset($thisInnovation->url))
+                            <a  style="text-align: center;" href="https://{{$thisInnovation->url}}" class="input-group-addon " target="_blank">Lire Plus ici</a>
+                            @endif
+                        </p> 
                         <!-- Go to www.addthis.com/dashboard to customize your tools -->
                         <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5edd607ed5e5d0d4"></script>
-                        
+
                 <!-- Go to www.addthis.com/dashboard to customize your tools -->
                 <div class="addthis_inline_share_toolbox"></div>
             
