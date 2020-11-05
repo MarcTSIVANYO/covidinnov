@@ -17,8 +17,8 @@ class FrontendController extends Controller
       }else{  
           return view('clientarea.dashboard');
         }  */
-
-        $innovations = Innovation::where('publier',1)->paginate(10);
+ 
+        $innovations = Innovation::where('publier',1)->orderBy('id', 'DESC')->paginate(10);
         return view('frontend.home', compact('innovations'));
     }
 }

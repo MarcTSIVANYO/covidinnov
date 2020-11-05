@@ -45,7 +45,7 @@ class ContactUSController extends Controller
            'objet' => $request->get('objet'),
            'user_message' => $request->get('message')
           ]; 
-          Mail::send('emails.contact', $data, function ($m) use ($data) {
+            Mail::send('emails.contact', $data, function ($m) use ($data) {
 	              $m->from($data['email'], $data['name']);
 	              $m->to(env('MAIL_USERNAME'), 'Depuis Nous contacter')->subject($data['objet']);
 	          });

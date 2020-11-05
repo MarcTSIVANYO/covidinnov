@@ -9,11 +9,14 @@
 <div class="container-fluid fh5co_header_bg">
     <div class="container">
         <div class="row">
-            <div class="col-12 fh5co_mediya_center">
+            <div class="col-6 fh5co_mediya_center">
                 <a href="#" class="color_fff fh5co_mediya_setting"> 
                 <div class="d-inline-block fh5co_trading_posotion_relative"><a href="{{url('/')}}" class="treding_btn">COVID INNOVATION </a> 
                 </div>
                 <a href="#" class="color_fff fh5co_mediya_setting">Luttons ensemble contre le Covid-19</a>
+            </div>
+             <div class="col-6 fh5co_mediya_center"  style="padding-top: 15px;">
+                <h2><div  id="google_translate_element"></div></h2>
             </div>
         </div>
     </div>

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use DB;
+use Mail;
 
 use App\App;
 
@@ -26,7 +27,7 @@ class InnovationController extends Controller
   
     public function index()
     {
-        $lists = Innovation::get();
+        $lists = Innovation::orderBy('id','Desc')->get();
         return view('innov.index',compact('lists'));
     }
 
@@ -35,7 +36,7 @@ class InnovationController extends Controller
  		return view('innov.create');
     }
 
-     public function store(Request $request)
+    public function store(Request $request)
     {
             $id=$request->input('id');
             //$id = 0 pour enregistrement 
@@ -142,8 +143,7 @@ class InnovationController extends Controller
         $chaine = trim($request->nom)."".trim($request->prenoms); 
         $string = iconv ('UTF-8', 'US-ASCII//TRANSLIT//IGNORE', $chaine);
         $string = preg_replace ('#[^.0-9a-z]+#i', '-', $string);
-        $titre = strtolower ($string); 
-        //dd($i);
+        $titre = strtolower ($string);  
         /*GESTION DE LIEN*/
                 do{ 
                     $rand="";
@@ -180,7 +180,7 @@ class InnovationController extends Controller
                 $toCreate = array_add($request->all(), 'image', $image); 
             } 
             $toCreate = array_add($toCreate, 'lien', $link);
-          
+          dd(toCreate);
           
         if($i->update($toCreate)){
             Session::flash('flash_message', 'Modification effectuée avec succès !'); 
@@ -196,6 +196,24 @@ class InnovationController extends Controller
         $innovation=Innovation::find($id);
         $innovation->publier=1;
         $innovation->save();
+         $data = [
+           'titre' => $innovation->titre,
+           'email' => $innovation->email,
+           'user_name' => $innovation->nom.' '.$innovation->prenoms, 
+           'url' => $innovation->lien
+          ]; 
+
+          Mail::send('emails.activeinno', $data, function ($m) use ($data) {
+              $m->from(env('MAIL_NOREPLY'), env('APP_NAME'));
+              $m->to($data['email'], 'Activation innovation')->subject($data['titre']);
+          });
+
+          //dd($data['email']);
+          /*Mail::send('emails.contact', $data, function ($m) use ($data) {
+              $m->from(env('MAIL_NOREPLY'), env('APP_NAME'));
+              $m->to(env($data['email']), 'Activation innovation')->subject('COVID Innovation : Activation');
+          });*/
+
         return redirect()->back();
 
     }
@@ -232,7 +250,7 @@ class InnovationController extends Controller
         $type = DB::select('select * from type_innovations where titre="'.$name.'"');
         $titleCategorie=$type[0]->titre;
         $title=$name;
-        $innovations=Innovation::where('type_innovation_id','=',$type[0]->id)->where('publier',1)->paginate(10); 
+        $innovations=Innovation::where('type_innovation_id','=',$type[0]->id)->where('publier',1)->orderBy('id', 'DESC')->paginate(10); 
          
         return view('frontend.home',compact('title','innovations','titleCategorie')); 
     }

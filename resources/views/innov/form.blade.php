@@ -19,8 +19,8 @@
                   {{ Session::get('flash_message') }}
                 </div> 
             @endif 
-        </div> 
-        <input type="hidden" name="id" value="@if(isset($innovation)){{$innovation->id}}@endif"/>
+        </div>  
+        <input type="hidden" name="id" value="@if(isset($list)) {{$list->id}} @endif"/>
 
         @if(isset(Auth::user()->id_users) && Auth::user()->admin==1)
             <input type="hidden" name="publier" value="1"/>
@@ -52,7 +52,7 @@
             {!! Form::label('url', 'Site web : ', ['class' => 'control-label']) !!} 
         </div>
         <div class="col-md-4"> 
-            <input type="text" placeholder="https:// "  class="form-control" name="url" value="@if(isset($list)) $list->url @endif">
+            <input type="text" placeholder="https:// "  class="form-control" name="url" value="@if(isset($list)) {{$list->url}} @endif">
 
             {!! $errors->first('url', '<p class="help-block">:message</p>') !!}
         </div>

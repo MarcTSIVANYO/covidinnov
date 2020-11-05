@@ -29,7 +29,16 @@
        </div>
        <div class="col-7 paddding">
           <div class="most_fh5co_treding_font"> 
-                <a href="{{url($value->lien)}}" class="d-block fh5co_small_post_heading"><span class="">{{$value->titre}}</span></a></div>
+                <a href="{{url($value->lien)}}" class="d-block fh5co_small_post_heading"><span class="">
+                  <?php 
+                      $max=50;
+                      if(strlen($value->titre)>$max){
+
+                          echo substr($value->titre, 0, $max)." ...";
+                      }else{
+                          echo $value->titre;  
+                      }
+                  ?>   </span></a></div>
           <div class="most_fh5co_treding_font_123"> {{$categorie[0]->titre}}</div>
        </div>
     </div>

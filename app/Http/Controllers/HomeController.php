@@ -34,7 +34,9 @@ class HomeController extends Controller
     {  
         if (Auth::user()->admin==1) {    
             $innovations=Innovation::get()->count();   
-            return view('dashboard.admin', compact('innovations'));
+            $innovationsActif=Innovation::where('publier',1)->get()->count();   
+            $innovationsNonActif=Innovation::where('publier',0)->get()->count();   
+            return view('dashboard.admin', compact('innovations','innovationsActif','innovationsNonActif'));
         }
 
         if (Auth::user()->admin==0) {    
